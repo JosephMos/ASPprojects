@@ -1,0 +1,70 @@
+<!DOCTYPE html><!--linked list-->
+<html>
+<body>
+  <h1> My Shopping List</h1>
+  <input type="text" id="itemName"  placeholder="Enter an item"><br>
+  <input type="number" id="num"  placeholder="Enter number of items"><br>
+  Bio: <input type="checkbox" id="bio" value=""><br>
+  <select class="" id="type">
+    <option value="Grocery">Grocery</option>
+    <option value="Toiletries">Toiletries</option>
+    <option value="Other">Other</option>
+  </select><br>
+
+  <button id="additem">Add item </button> <br>
+  <h1> Grocery </h1>
+  <ul id="g"></ul>
+  <h1> Toiletries </h1>
+  <ul id="t"></ul>
+  <h1> Other </h1>
+  <ul id="o"></ul>
+</body>
+
+<script>
+  function Item(n) { // Constructor for an item in the linked list
+    this.name=n;
+    this.next = null;
+  };
+  var firstItem = null; // first item in the linked list
+
+  function resetListDisplay(list){ //empties out the HTML <ul> element
+    let myList = document.getElementById(list);
+    for(let i = myList.childNodes.length - 1 ; i>=0;i--){
+      myList.removeChild(myList.childNodes[i]);
+    }
+  }
+
+  function updateListDisplay(list){ //adds all items from the linked list
+    let currentItem = firstItem;
+    while(currentItem != null){
+      var node = document.createElement("LI");
+      var textnode = document.createTextNode(currentItem.name);
+      node.appendChild(textnode);
+      document.getElementById(list).appendChild(node);
+      currentItem = currentItem.next;
+    }
+  }
+
+  function addItem(name){ //adds a new item to the linked list
+    if (firstItem == null){ //if there is no items in the linked list...
+      firstItem = new Item(name);
+      return; //end the function
+    }
+    let lastItem = firstItem;
+    while (lastItem.next != null){ // find the last item
+      lastItem=lastItem.next;
+    }
+    lastItem.next = new Item(name); //link the last item to a new item
+  }
+
+  function 
+
+  document.getElementById("additem").onclick= function(){
+    resetListDisplay("g");
+    resetListDisplay("t");
+    resetListDisplay("o");
+    addItem(document.getElementById("num").value + " " + document.getElementById("itemName").value;
+    updateListDisplay("t");//Change this to be either g, t, or o
+  };
+</script>
+</html>

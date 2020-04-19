@@ -1,0 +1,134 @@
+<html>
+<head></head>
+<body>
+<p id="demo"> </p>
+<script>
+
+function card(num, suit){
+  this.num = num;
+  this.suit = suit;
+  this.card = function(){
+    return this.num + " of " + this.suit;
+  };
+}
+
+var oneD = new card("Ace", "Diamonds");
+var twoD = new card(2, "Diamonds");
+var threeD = new card(3, "Diamonds");
+var fourD = new card(4, "Diamonds");
+var fiveD = new card(5, "Diamonds");
+var sixD = new card(6, "Diamonds");
+var sevenD = new card(7, "Diamonds");
+var eightD = new card(8, "Diamonds");
+var nineD = new card(9, "Diamonds");
+var tenD = new card(10, "Diamonds");
+var jD = new card("Jack", "Diamonds");
+var qD = new card("Queen", "Diamonds");
+var kD = new card("King", "Diamonds");
+
+var oneH = new card("Ace", "Hearts");
+var twoH = new card(2, "Hearts");
+var threeH = new card(3, "Hearts");
+var fourH = new card(4, "Hearts");
+var fiveH = new card(5, "Hearts");
+var sixH = new card(6, "Hearts");
+var sevenH = new card(7, "Hearts");
+var eightH = new card(8, "Hearts");
+var nineH = new card(9, "Hearts");
+var tenH = new card(10, "Hearts");
+var jH = new card("Jack", "Hearts");
+var qH = new card("Queen", "Hearts");
+var kH = new card("King", "Hearts");
+
+var oneC = new card("Ace", "Clubs");
+var twoC = new card(2, "Clubs");
+var threeC = new card(3, "Clubs");
+var fourC = new card(4, "Clubs");
+var fiveC = new card(5, "Clubs");
+var sixC = new card(6, "Clubs");
+var sevenC = new card(7, "Clubs");
+var eightC = new card(8, "Clubs");
+var nineC = new card(9, "Clubs");
+var tenC = new card(10, "Clubs");
+var jC = new card("Jack", "Clubs");
+var qC = new card("Queen", "Clubs");
+var kC = new card("King", "Clubs");
+
+var oneS = new card("Ace", "Spades");
+var twoS = new card(2, "Spades");
+var threeS = new card(3, "Spades");
+var fourS = new card(4, "Spades");
+var fiveS = new card(5, "Spades");
+var sixS = new card(6, "Spades");
+var sevenS = new card(7, "Spades");
+var eightS = new card(8, "Spades");
+var nineS = new card(9, "Spades");
+var tenS = new card(10, "Spades");
+var jS = new card("Jack", "Spades");
+var qS = new card("Queen", "Spades");
+var kS = new card("King", "Spades");
+
+
+
+
+document.getElementById("demo").innerHTML =
+oneD.card() + "<br>" +
+twoD.card() + "<br>" +
+threeD.card() + "<br>" +
+fourD.card() + "<br>" +
+fiveD.card() + "<br>" +
+sixD.card() + "<br>" +
+sevenD.card() + "<br>" +
+eightD.card() + "<br>" +
+nineD.card() + "<br>" +
+tenD.card() + "<br>" +
+jD.card() + "<br>" +
+qD.card() + "<br>" +
+kD.card() + "<br><br>" +
+
+oneH.card() + "<br>" +
+twoH.card() + "<br>" +
+threeH.card() + "<br>" +
+fourH.card() + "<br>" +
+fiveH.card() + "<br>" +
+sixH.card() + "<br>" +
+sevenH.card() + "<br>" +
+eightH.card() + "<br>" +
+nineH.card() + "<br>" +
+tenH.card() + "<br>" +
+jH.card() + "<br>" +
+qH.card() + "<br>" +
+kH.card() + "<br><br>" +
+
+oneC.card() + "<br>" +
+twoC.card() + "<br>" +
+threeC.card() + "<br>" +
+fourC.card() + "<br>" +
+fiveC.card() + "<br>" +
+sixC.card() + "<br>" +
+sevenC.card() + "<br>" +
+eightC.card() + "<br>" +
+nineC.card() + "<br>" +
+tenC.card() + "<br>" +
+jC.card() + "<br>" +
+qC.card() + "<br>" +
+kC.card() + "<br><br>" +
+
+oneS.card() + "<br>" +
+twoS.card() + "<br>" +
+threeS.card() + "<br>" +
+fourS.card() + "<br>" +
+fiveS.card() + "<br>" +
+sixS.card() + "<br>" +
+sevenS.card() + "<br>" +
+eightS.card() + "<br>" +
+nineS.card() + "<br>" +
+tenS.card() + "<br>" +
+jS.card() + "<br>" +
+qS.card() + "<br>" +
+kS.card() + "<br><br>"
+;
+
+</script>
+</body>
+</html>

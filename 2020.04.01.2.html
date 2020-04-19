@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+  <input type="text" id="itemName"  placeholder="Enter an item"><br>
+  <input type="number" id="num"  placeholder="Enter number of items"><br>
+  Bio: <input type="checkbox" id="bio" value="bio"> (WIP)<br>
+  <select class="" id="type">
+    <option value="Grocery">Grocery</option>
+    <option value="Toiletries">Toiletries</option>
+    <option value="Other">Other</option>
+  </select><br>
+  <button id="submit">Submit</button><br>
+  <h1> Grocery </h1>
+  <p id="Groceries"> </p>
+  <h1> Toiletries </h1>
+  <p id="Toiletries"> </p>
+  <h1> Other </h1>
+  <p id="Other"> </p>
+  </body>
+  <script>
+//create a list and add the list there. then sort that out individually to present on page.
+  var list = [];
+  var bio = " ";
+
+  function addToList () {
+    if (document.getElementById("bio") != null) {
+      let bio = " bio";
+    }
+
+    if (document.getElementById("type").value == "Grocery") {
+      list[list.length] = "g" + document.getElementById("num").value + " " + document.getElementById("itemName").value + bio;
+    } else if (document.getElementById("type").value == "Toiletries") {
+      list[list.length] = "t" + document.getElementById("num").value + " " + document.getElementById("itemName").value + bio;
+    } else if (document.getElementById("type").value == "Other") {
+      list[list.length] = "o" + document.getElementById("num").value + " " + document.getElementById("itemName").value + bio;
+    }
+  }
+
+//list.foreach(showEachList);
+
+  function showEachList (item, index) {
+
+    if (item.substring(0, 1) == "g") {
+      if (document.getElementById("Groceries").value != " ") {
+        document.getElementById("Groceries").innerHTML += list[index].substring(1) + "<br>";
+      }
+      else {
+      document.getElementById("Groceries").innerHTML = list[index].substring(1) + "<br>";
+      }
+    } else if (item.substring(0, 1) == "t") {
+      if (document.getElementById("Toiletries").value != " ") {
+        document.getElementById("Toiletries").innerHTML += list[index].substring(1) + "<br>";
+      }
+      else {
+      document.getElementById("Toiletries").innerHTML = list[index].substring(1) + "<br>";
+      }
+    } else if (item.substring(0, 1) == "o") {
+      if (document.getElementById("Other").value != " ") {
+        document.getElementById("Other").innerHTML += list[index].substring(1) + "<br>";
+      }
+      else {
+      document.getElementById("Other").innerHTML = list[index].substring(1) + "<br>";
+      }
+    }
+  }
+
+  function resetLists(){
+    document.getElementById("Groceries").innerHTML = " ";
+    document.getElementById("Toiletries").innerHTML = " ";
+    document.getElementById("Other").innerHTML = " ";
+  }
+
+  document.getElementById("submit").onclick= function () {
+  addToList();
+  resetLists();
+  list.forEach(showEachList);
+  }
+  /*
+  while(currentItem != null){
+    var node = document.createElement("LI");
+    var textnode = document.createTextNode(currentItem.name);
+    node.appendChild(textnode);
+    document.getElementById(list).appendChild(node);
+    currentItem = currentItem.next;
+  }
+  */
+
+  </script>
+</html>

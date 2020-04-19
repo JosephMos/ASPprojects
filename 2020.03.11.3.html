@@ -1,0 +1,25 @@
+<html>
+<body>
+
+  <h2>JavaScript Objects</h2>
+
+  <p id="demo"></p>
+
+  <script>
+
+    function Car(t,m,c){
+      this.type = t;
+      this.model = m;
+      this.color = c;
+      this.getDetails = function(){
+        return "This is a " + this.color + " " + this.type + " " + this.model;
+      };
+    };
+    var fiat = new Car("Fiat","500","white");
+
+    document.getElementById("demo").innerHTML = fiat.getDetails();
+
+  </script>
+
+</body>
+</html>

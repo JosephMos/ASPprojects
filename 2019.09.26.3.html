@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<h1>Order Your Fruit Here:</h1>
+<form action="<?=$_SERVER["PHP_SELF"]?>"" method="get">
+Bananas: <input type="number" name="bananas" value="<?=$_GET['bananas']?>"><br>
+Apples: <input type="number" name="apples" value="<?=$_GET['apples']?>"><br>
+Pears: <input type="number" name="pears" value="<?=$_GET['pears']?>"><br>
+Watermelon: <input type="number" name="watermelons" value="<?=$_GET['watermelon']?>"><br>
+
+<input type="submit">
+</form>
+</body>
+  <?php
+    if (isset($_GET["bananas"])){
+      foreach ($_GET as $fruit => $amount){
+        echo "You ordered $amount $fruit.<br>";
+      }
+    }
+  ?>
+</html>

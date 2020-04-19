@@ -1,0 +1,176 @@
+<html>
+<head></head>
+<body>
+<p id="demo"> </p>
+<script>
+//test
+//works but not using
+var randNum = Math.floor(Math.random() * 52);//returns integer between 0 and 51
+
+function numToCard(num){
+  let ToCard = [" ", 0];
+  switch (num) {
+    case 0:
+    ToCard[0] = "Ace of Spades"
+    break;
+    case 1:
+    ToCard[0] = "2 of Spades"
+    break;
+    case 2:
+    ToCard[0] = "3 of Spades"
+    break;
+    case 3:
+    ToCard[0] = "4 of Spades"
+    break;
+    case 4:
+    ToCard[0] = "5 of Spades"
+    break;
+    case 5:
+    ToCard[0] = "6 of Spades"
+    break;
+    case 6:
+    ToCard[0] = "7 of Spades"
+    break;
+    case 7:
+    ToCard[0] = "8 of Spades"
+    break;
+    case 8:
+    ToCard[0] = "9 of Spades"
+    break;
+    case 9:
+    ToCard[0] = "10 of Spades"
+    break;
+    case 10:
+    ToCard[0] = "Jack of Spades"
+    break;
+    case 11:
+    ToCard[0] = "Queen of Spades"
+    break;
+    case 12:
+    ToCard[0] = "King of Spades"
+    break;
+    case 13:
+    ToCard[0] = "Ace of Clubs"
+    break;
+    case 14:
+    ToCard[0] = "2 of Clubs"
+    break;
+    case 15:
+    ToCard[0] = "3 of Clubs"
+    break;
+    case 16:
+    ToCard[0] = "4 of Clubs"
+    break;
+    case 17:
+    ToCard[0] = "5 of Clubs"
+    break;
+    case 18:
+    ToCard[0] = "6 of Clubs"
+    break;
+    case 19:
+    ToCard[0] = "7 of Clubs"
+    break;
+    case 20:
+    ToCard[0] = "8 of Clubs"
+    break;
+    case 21:
+    ToCard[0] = "9 of Clubs"
+    break;
+    case 22:
+    ToCard[0] = "10 of Clubs"
+    break;
+    case 23:
+    ToCard[0] = "Jack of Clubs"
+    break;
+    case 24:
+    ToCard[0] = "Queen of Clubs"
+    break;
+    case 25:
+    ToCard[0] = "King of Clubs"
+    break;
+    case 26:
+    ToCard[0] = "Ace of Diamonds"
+    break;
+    case 27:
+    ToCard[0] = "2 of Diamonds"
+    break;
+    case 28:
+    ToCard[0] = "3 of Diamonds"
+    break;
+    case 29:
+    ToCard[0] = "4 of Diamonds"
+    break;
+    case 30:
+    ToCard[0] = "5 of Diamonds"
+    break;
+    case 31:
+    ToCard[0] = "6 of Diamonds"
+    break;
+    case 32:
+    ToCard[0] = "7 of Diamonds"
+    break;
+    case 33:
+    ToCard[0] = "8 of Diamonds"
+    break;
+    case 34:
+    ToCard[0] = "9 of Diamonds"
+    break;
+    case 35:
+    ToCard[0] = "10 of Diamonds"
+    break;
+    case 36:
+    ToCard[0] = "Jack of Diamonds"
+    break;
+    case 37:
+    ToCard[0] = "Queen of Diamonds"
+    break;
+    case 38:
+    ToCard[0] = "King of Diamonds"
+    break;
+    case 39:
+    ToCard[0] = "Ace of Hearts"
+    break;
+    case 40:
+    ToCard[0] = "2 of Hearts"
+    break;
+    case 41:
+    ToCard[0] = "3 of Hearts"
+    break;
+    case 42:
+    ToCard[0] = "4 of Hearts"
+    break;
+    case 43:
+    ToCard[0] = "5 of Hearts"
+    break;
+    case 44:
+    ToCard[0] = "6 of Hearts"
+    break;
+    case 45:
+    ToCard[0] = "7 of Hearts"
+    break;
+    case 46:
+    ToCard[0] = "8 of Hearts"
+    break;
+    case 47:
+    ToCard[0] = "9 of Hearts"
+    break;
+    case 48:
+    ToCard[0] = "10 of Hearts"
+    break;
+    case 49:
+    ToCard[0] = "Jack of Hearts"
+    break;
+    case 50:
+    ToCard[0] = "Queen of Hearts"
+    break;
+    case 51:
+    ToCard[0] = "King of Hearts"
+    break;
+  }
+  return ToCard;
+}
+document.getElementById("demo").innerHTML = numToCard(randNum)[0];
+
+</script>
+</body>
+</html>

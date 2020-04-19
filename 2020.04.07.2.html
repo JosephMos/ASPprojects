@@ -1,0 +1,266 @@
+<html> <!-- WIP -->
+<head></head> <!--3-->
+<body style="background-color:#21242e">
+  <h1 style="color:white"> Dealer's Cards </h1>
+  <p id="DealerCards" style="color:white"> </p>
+  <h1 style="color:white"> Your Cards </h1>
+  <p id="PlayerCards" style="color:white"> </p>
+  <h1 style="color:white"> Money Left </h1>
+  <p id="MoneyLeft" style="color:white"> $100 </p>
+  <p id="MoneyBet" style="color:white"> </p>
+  <input type="number" id="MoneyToBet"  placeholder="Enter amount of $ to bet"> <button id="Bet">Bet</button> <br>
+  <button id="Hit">Hit</button> <button id="Fold">Fold</button><br>
+  <p id="MoneyBet" style="color:white"> </p>
+
+  <script>
+//each player and dealer can only have max 11 cards b4 bust (if unlucky)
+  var pCards = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];//player Cards
+  var dCards = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];//dealer Cards
+
+    function checkCards (item) {
+      //check to see if randNum is in the ^^ cards thing
+    }
+    //.............................
+    //cards section
+
+    var randNum = Math.floor(Math.random() * 52);//returns integer between 0 and 51
+    var CardNValue = [" ", 0];//this is ["card name", card value]
+    function numToCard(num){
+      let ToCard;
+      switch (num) {
+        case 0:
+        ToCard = "Ace of Spades"
+        break;
+        case 1:
+        ToCard = "2 of Spades"
+        break;
+        case 2:
+        ToCard = "3 of Spades"
+        break;
+        case 3:
+        ToCard = "4 of Spades"
+        break;
+        case 4:
+        ToCard = "5 of Spades"
+        break;
+        case 5:
+        ToCard = "6 of Spades"
+        break;
+        case 6:
+        ToCard = "7 of Spades"
+        break;
+        case 7:
+        ToCard = "8 of Spades"
+        break;
+        case 8:
+        ToCard = "9 of Spades"
+        break;
+        case 9:
+        ToCard = "10 of Spades"
+        break;
+        case 10:
+        ToCard = "Jack of Spades"
+        break;
+        case 11:
+        ToCard = "Queen of Spades"
+        break;
+        case 12:
+        ToCard = "King of Spades"
+        break;
+        case 13:
+        ToCard = "Ace of Clubs"
+        break;
+        case 14:
+        ToCard = "2 of Clubs"
+        break;
+        case 15:
+        ToCard = "3 of Clubs"
+        break;
+        case 16:
+        ToCard = "4 of Clubs"
+        break;
+        case 17:
+        ToCard = "5 of Clubs"
+        break;
+        case 18:
+        ToCard = "6 of Clubs"
+        break;
+        case 19:
+        ToCard = "7 of Clubs"
+        break;
+        case 20:
+        ToCard = "8 of Clubs"
+        break;
+        case 21:
+        ToCard = "9 of Clubs"
+        break;
+        case 22:
+        ToCard = "10 of Clubs"
+        break;
+        case 23:
+        ToCard = "Jack of Clubs"
+        break;
+        case 24:
+        ToCard = "Queen of Clubs"
+        break;
+        case 25:
+        ToCard = "King of Clubs"
+        break;
+        case 26:
+        ToCard = "Ace of Diamonds"
+        break;
+        case 27:
+        ToCard = "2 of Diamonds"
+        break;
+        case 28:
+        ToCard = "3 of Diamonds"
+        break;
+        case 29:
+        ToCard = "4 of Diamonds"
+        break;
+        case 30:
+        ToCard = "5 of Diamonds"
+        break;
+        case 31:
+        ToCard = "6 of Diamonds"
+        break;
+        case 32:
+        ToCard = "7 of Diamonds"
+        break;
+        case 33:
+        ToCard = "8 of Diamonds"
+        break;
+        case 34:
+        ToCard = "9 of Diamonds"
+        break;
+        case 35:
+        ToCard = "10 of Diamonds"
+        break;
+        case 36:
+        ToCard = "Jack of Diamonds"
+        break;
+        case 37:
+        ToCard = "Queen of Diamonds"
+        break;
+        case 38:
+        ToCard = "King of Diamonds"
+        break;
+        case 39:
+        ToCard = "Ace of Hearts"
+        break;
+        case 40:
+        ToCard = "2 of Hearts"
+        break;
+        case 41:
+        ToCard = "3 of Hearts"
+        break;
+        case 42:
+        ToCard = "4 of Hearts"
+        break;
+        case 43:
+        ToCard = "5 of Hearts"
+        break;
+        case 44:
+        ToCard = "6 of Hearts"
+        break;
+        case 45:
+        ToCard = "7 of Hearts"
+        break;
+        case 46:
+        ToCard = "8 of Hearts"
+        break;
+        case 47:
+        ToCard = "9 of Hearts"
+        break;
+        case 48:
+        ToCard = "10 of Hearts"
+        break;
+        case 49:
+        ToCard = "Jack of Hearts"
+        break;
+        case 50:
+        ToCard = "Queen of Hearts"
+        break;
+        case 51:
+        ToCard = "King of Hearts"
+        break;
+      }
+    }
+
+    //..............................
+    //dealing section
+
+
+
+    function deal() {
+
+    }
+
+    function newGame(){
+
+    }
+
+    //..............................
+    //game section
+
+    var win = false;
+    //make the game here based off the Cards
+    //when win, change var win to be true
+
+    //..............................
+    //money section
+
+    var money = 100;
+
+    function useMoney() {
+      let betAmt = 5;
+      if (document.getElementById("MoneyToBet").value >= 1) {
+        betAmt = document.getElementById("MoneyToBet").value;
+      }
+      money = money - betAmt;
+      document.getElementById("MoneyLeft").innerHTML = "$" + money;
+      document.getElementById("MoneyBet").innerHTML = "You bet: $" + betAmt;
+    }
+    function MoneyWon () {
+      if (win == true) {
+        money = (2 * betAmt) + money;
+        window.alert('Congrats. You won.');
+      }
+      else {
+        window.alert('You lost this round, you loser.');
+      }
+    }
+    //..............................
+    //all the button commands
+    document.getElementById("Bet").onclick = function(){
+      useMoney();
+    }
+
+
+    //..............................
+    //konami cheat code section
+    //punch in the code on your keyboard for a little something. works as many times as you want
+    //reference: https://gomakethings.com/how-to-create-a-konami-code-easter-egg-with-vanilla-js/
+    var pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    var current = 0;
+
+    var keyHandler = function (event) {
+    	if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
+    		current = 0;
+    		return;
+    	}
+    	current++;
+    	if (pattern.length === current) {
+    		current = 0;
+    		window.alert('Wiring $1000 to Player');
+        money += 1000;
+        document.getElementById("MoneyLeft").innerHTML = "$" + money;
+    	}
+    };
+    document.addEventListener('keydown', keyHandler, false);
+
+    //..............................
+
+  </script>
+</body>
+</html>

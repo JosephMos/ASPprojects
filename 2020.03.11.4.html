@@ -1,0 +1,41 @@
+<html>
+<body>
+
+  <h2>JavaScript Objects</h2>
+  <button type="button" id="carInfo">Car info</button>
+  <button type="button" id="addCar">Add a car</button>
+  <p id="demo"></p>
+
+  <script>
+
+    function Car(t,m,c){
+      this.type = t;
+      this.model = m;
+      this.color = c;
+      this.getDetails = function(){
+        return "This is a " + this.color + " " + this.type + " " + this.model;
+      };
+    };
+    var cars = [
+      new Car("Fiat","500","white"),
+      new Car("Horse","Model 3","brown"),
+    ];
+    updateDisplay();
+    function updateDisplay() {
+      document.getElementById("demo").innerHTML = "";
+      for (let i=0;i<cars.length;i++)
+        document.getElementById("demo").innerHTML += cars[i].getDetails() + "<br>";
+      }
+    }
+    document.getElementById('carInfo').onclick = updateDisplay;
+    document.getElementById('addCar').onclick = function (){
+      let type = prompt("Enter type");
+      let model = prompt("Enter model");
+      let color = prompt("Enter color");
+      cars.push(new Car(type,model,color));
+      updateDisplay();
+    }
+  </script>
+
+</body>
+</html>

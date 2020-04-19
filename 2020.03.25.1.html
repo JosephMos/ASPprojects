@@ -1,0 +1,54 @@
+<!DOCTYPE html><!--linked list-->
+<html>
+<body>
+  <h1> My Shopping List</h1>
+  <ul id="myList">
+  </ul>
+
+  <button id="additem">Add item </button>
+</body>
+
+<script>
+  function Item(n) { // Constructor for an item in the linked list
+    this.name=n;
+    this.next = null;
+  };
+  var firstItem = null; // first item in the linked list
+
+  function resetListDisplay(){ //empties out the HTML <ul> element
+    let myList = document.getElementById("myList");
+    for(let i = myList.childNodes.length - 1 ; i>=0;i--){
+      myList.removeChild(myList.childNodes[i]);
+    }
+  }
+
+  function updateListDisplay(){ //adds all items from the linked list
+    let currentItem = firstItem;
+    while(currentItem != null){
+      var node = document.createElement("LI");
+      var textnode = document.createTextNode(currentItem.name);
+      node.appendChild(textnode);
+      document.getElementById("myList").appendChild(node);
+      currentItem = currentItem.next;
+    }
+  }
+
+  function addItem(name){ //adds a new item to the linked list
+    if (firstItem == null){ //if there is no items in the linked list...
+      firstItem = new Item(name);
+      return; //end the function
+    }
+    let lastItem = firstItem;
+    while (lastItem.next != null){ // find the last item
+      lastItem=lastItem.next;
+    }
+    lastItem.next = new Item(name); //link the last item to a new item
+  }
+
+  document.getElementById("additem").onclick= function(){
+    resetListDisplay();
+    addItem(prompt("Enter an item"));
+    updateListDisplay();
+  };
+</script>
+</html>

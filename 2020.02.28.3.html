@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body id="body">
+
+<button type="button" id="button1">Click me</button>
+<script>
+
+  document.getElementById("button1").onclick = function(){
+    var para = document.createElement("div");
+    var t = document.createTextNode(prompt("Enter an Item"));
+    para.appendChild(t);
+    document.getElementById("body").appendChild(para);
+  }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+<body>
+  <h1> Hello World </h1>
+  <u1 id="list1">
+    <li>food1<li>
+  </ul>
+  <button id="button1">Add item</button>
+  <script>
+
+  let items = ["Just kidding", "I don't care what you put in", "This is my list", "I put in whatever I want"];
+
+  document.getElementById("button1").onclick=function(){
+    items.push(prompt("Enter an item"));
+    update(items);
+  }
+
+  </script>
+
+</body>
+</html>

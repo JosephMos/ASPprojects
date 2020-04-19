@@ -1,0 +1,31 @@
+<!DOCTYPE html><!--shopping list array-->
+<html>
+<body>
+  <h1> My Shopping List</h1>
+  <ul id="myList">
+  </ul>
+  <button id="additem">Add item </button>
+</body>
+
+<script>
+  let items = [];
+
+  function updateList(list){
+    for(let i = 0;i<list.length;i++){
+      var node = document.createElement("LI");
+      var textnode = document.createTextNode(list[i]);
+      node.appendChild(textnode);
+      document.getElementById("myList").appendChild(node);
+    }
+  }
+
+  document.getElementById("additem").onclick= function(){
+    let myList = document.getElementById("myList");
+    for(let i = myList.childNodes.length - 1 ; i>=0;i--){
+      myList.removeChild(myList.childNodes[i]);
+    }
+    items.push(prompt("Enter an item"));
+    updateList(items);
+  };
+</script>
+</html>

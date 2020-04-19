@@ -1,0 +1,486 @@
+<html>
+<head></head>
+<body style="background-color:#21242e">
+
+  <p id="demo" style="color:white"> </p>
+  <h1 id="headD" style="color:white;text-align:center;"> Dealer's Cards </h1>
+  <p id="DealerCards" style="color:white;text-align:center;"> </p>
+  <h1 id="headP" style="color:white;text-align:center;"> Your Cards </h1>
+  <p id="PlayerCards" style="color:white;text-align:center;"> </p>
+  <h3 id="headM" style="color:white"> Money Left </h3>
+  <p id="MoneyLeft" style="color:white"> $100 </p>
+  <p id="MoneyBet" style="color:white"> </p>
+  <input type="number" id="MoneyToBet"  placeholder="Enter amount of $ to bet"> <button id="Bet">Bet</button> <br>
+  <button id="Hit">Hit</button> <button id="Stand">Stand</button> <button id="Fold">Fold</button><br><br>
+  <button id="NextRound">Next Round</button>
+
+  <script>
+//each player and dealer can only have max 9 cards b4 bust (if Ace = 11) [11 cards if ace = 1]
+  var pCards = [0, 0, 0, 0, 0, 0, 0, 0, 0];//player Cards
+  var dCards = [0, 0, 0, 0, 0, 0, 0, 0, 0];//dealer Cards
+
+  var randNum = Math.floor(Math.random() * 52);//returns integer between 0 and 51
+
+  function createRand() {
+    randNum = Math.floor(Math.random() * 52) + 1;
+    //document.getElementById("demo").innerHTML += "randNum: " + randNum + "<br>";
+  }
+  
+    var included;
+    function checkCards () {
+      let i;
+      included = false;
+      for (i = 0; i < pCards.length; i++) {
+        //document.getElementById("demo").innerHTML += "i: " + i + ". included: " + included + "<br>";
+        if (pCards[i] == randNum) {
+          included = true;
+          i = pCards.length - 1;
+        }
+        else if (dCards[i] == randNum) {
+          included = true;
+          i = pCards.length - 1;
+        }
+      }
+    }
+
+    var slotNum;
+    function checkCardSlotNum (array) {//use either pCards or dCards for array input
+      let i;
+      for (i = 0; i < pCards.length; i++) {
+        if (array[i] == 0) {
+          slotNum = i;
+          i = pCards.length - 1;
+        }
+      }
+    }
+    //.............................
+    //cards section
+
+    var ToCard;//the worded ver of the Cards
+    var ToCardValue;//the point version of the cards
+    function numToCard(num){
+      switch (num) {
+        case 52:
+        ToCard = "Ace of Spades"
+        break;
+        case 1:
+        ToCard = "2 of Spades"
+        break;
+        case 2:
+        ToCard = "3 of Spades"
+        break;
+        case 3:
+        ToCard = "4 of Spades"
+        break;
+        case 4:
+        ToCard = "5 of Spades"
+        break;
+        case 5:
+        ToCard = "6 of Spades"
+        break;
+        case 6:
+        ToCard = "7 of Spades"
+        break;
+        case 7:
+        ToCard = "8 of Spades"
+        break;
+        case 8:
+        ToCard = "9 of Spades"
+        break;
+        case 9:
+        ToCard = "10 of Spades"
+        break;
+        case 10:
+        ToCard = "Jack of Spades"
+        break;
+        case 11:
+        ToCard = "Queen of Spades"
+        break;
+        case 12:
+        ToCard = "King of Spades"
+        break;
+        case 13:
+        ToCard = "Ace of Clubs"
+        break;
+        case 14:
+        ToCard = "2 of Clubs"
+        break;
+        case 15:
+        ToCard = "3 of Clubs"
+        break;
+        case 16:
+        ToCard = "4 of Clubs"
+        break;
+        case 17:
+        ToCard = "5 of Clubs"
+        break;
+        case 18:
+        ToCard = "6 of Clubs"
+        break;
+        case 19:
+        ToCard = "7 of Clubs"
+        break;
+        case 20:
+        ToCard = "8 of Clubs"
+        break;
+        case 21:
+        ToCard = "9 of Clubs"
+        break;
+        case 22:
+        ToCard = "10 of Clubs"
+        break;
+        case 23:
+        ToCard = "Jack of Clubs"
+        break;
+        case 24:
+        ToCard = "Queen of Clubs"
+        break;
+        case 25:
+        ToCard = "King of Clubs"
+        break;
+        case 26:
+        ToCard = "Ace of Diamonds"
+        break;
+        case 27:
+        ToCard = "2 of Diamonds"
+        break;
+        case 28:
+        ToCard = "3 of Diamonds"
+        break;
+        case 29:
+        ToCard = "4 of Diamonds"
+        break;
+        case 30:
+        ToCard = "5 of Diamonds"
+        break;
+        case 31:
+        ToCard = "6 of Diamonds"
+        break;
+        case 32:
+        ToCard = "7 of Diamonds"
+        break;
+        case 33:
+        ToCard = "8 of Diamonds"
+        break;
+        case 34:
+        ToCard = "9 of Diamonds"
+        break;
+        case 35:
+        ToCard = "10 of Diamonds"
+        break;
+        case 36:
+        ToCard = "Jack of Diamonds"
+        break;
+        case 37:
+        ToCard = "Queen of Diamonds"
+        break;
+        case 38:
+        ToCard = "King of Diamonds"
+        break;
+        case 39:
+        ToCard = "Ace of Hearts"
+        break;
+        case 40:
+        ToCard = "2 of Hearts"
+        break;
+        case 41:
+        ToCard = "3 of Hearts"
+        break;
+        case 42:
+        ToCard = "4 of Hearts"
+        break;
+        case 43:
+        ToCard = "5 of Hearts"
+        break;
+        case 44:
+        ToCard = "6 of Hearts"
+        break;
+        case 45:
+        ToCard = "7 of Hearts"
+        break;
+        case 46:
+        ToCard = "8 of Hearts"
+        break;
+        case 47:
+        ToCard = "9 of Hearts"
+        break;
+        case 48:
+        ToCard = "10 of Hearts"
+        break;
+        case 49:
+        ToCard = "Jack of Hearts"
+        break;
+        case 50:
+        ToCard = "Queen of Hearts"
+        break;
+        case 51:
+        ToCard = "King of Hearts"
+        break;
+      }
+      let ToCardFirst = ToCard.substring(0, 1)
+      switch (ToCardFirst) {
+        case "A":
+        ToCardValue = 11
+        break;
+        case "2":
+        ToCardValue = 2
+        break;
+        case "3":
+        ToCardValue = 3
+        break;
+        case "4":
+        ToCardValue = 4
+        break;
+        case "5":
+        ToCardValue = 5
+        break;
+        case "6":
+        ToCardValue = 6
+        break;
+        case "7":
+        ToCardValue = 7
+        break;
+        case "8":
+        ToCardValue = 8
+        break;
+        case "9":
+        ToCardValue = 9
+        break;
+        case "1"://for 10 b/c ace isn't 1 so this works
+        ToCardValue = 10
+        break;
+        case "J":
+        ToCardValue = 10
+        break;
+        case "Q":
+        ToCardValue = 10
+        break;
+        case "K":
+        ToCardValue = 10
+        break;
+      }
+    }
+
+    //..............................
+    //game section
+
+    var win = false;
+    //make the game here based off the Cards
+    //when win, change var win to be true
+
+    //..............................
+    //money section
+
+    var money = 100;
+    var betAmt = 0;
+    function useMoney() {
+      betAmt = 5;
+      if (document.getElementById("MoneyToBet").value >= money){
+        betAmt = money;
+      }
+      else if (document.getElementById("MoneyToBet").value >= 1) {
+        betAmt = Number(document.getElementById("MoneyToBet").value);
+      }
+      money = money - betAmt;
+      document.getElementById("MoneyLeft").innerHTML = "$" + money;
+      document.getElementById("MoneyBet").innerHTML = "You bet: $" + betAmt;
+    }
+    function MoneyWon () {
+      if (win == true) {
+        money = money + betAmt + betAmt;
+        document.getElementById("MoneyBet").innerHTML += "<br><br>You won: $" + Number(betAmt + betAmt);
+      }
+      document.getElementById("MoneyLeft").innerHTML = "$" + money;
+    }
+
+//..............................
+    var pCardsTotalValue = 0
+    var dCardsTotalValue = 0
+    function dealerDeal () {
+      included = true;
+      while (included == true){
+        createRand();//changes randNum to be a rand number
+        checkCards();//checks dealer's cards.
+      }
+      checkCardSlotNum(dCards);//checks which one of the player's cards slot is empty
+      dCards[slotNum] = randNum;//puts in randNum into that slot
+      let i;
+      dCardsTotalValue = 0;
+      document.getElementById("DealerCards").innerHTML = " ";
+      for (i = 0; i <= slotNum; i++) {//update html "player cards"
+        numToCard(dCards[i]);
+        document.getElementById("DealerCards").innerHTML += ToCard + "<br> ";
+        dCardsTotalValue += ToCardValue;
+      }
+      document.getElementById("DealerCards").innerHTML += "<br><br>Out of 21, the dealer's total points are: " + dCardsTotalValue;
+    }
+
+    function dealersTurn () {
+      let i = 0;
+      while (i < 9) {
+        dealerDeal();
+        i++;
+        if (dCardsTotalValue >= 18){
+          i = 9;
+        }
+      }
+    }
+
+    function compare () {
+      if (Number(dCardsTotalValue) > 21) {
+        win = true;
+        MoneyWon();
+      }
+      else if (Number(pCardsTotalValue) > Number(dCardsTotalValue)){
+        win = true;
+        MoneyWon();
+      }
+      else if (Number(pCardsTotalValue) = Number(dCardsTotalValue)){
+        win = false;
+        money = money + betAmt;
+        MoneyWon();
+      }
+      else {
+        win = false;
+        document.getElementById("MoneyLeft").innerHTML = "$" + money;
+      }
+    }
+//..............................
+    function gameLost () {
+      if (win == false && Number(money) == 0) {
+        document.getElementById("Bet").style.visibility = "hidden";
+        document.getElementById("MoneyToBet").style.visibility = "hidden";
+        document.getElementById("Hit").style.visibility = "hidden";
+        document.getElementById("Stand").style.visibility = "hidden";
+        document.getElementById("Fold").style.visibility = "hidden";
+        document.getElementById("headD").style.visibility = "hidden";
+        document.getElementById("headP").style.visibility = "hidden";
+        document.getElementById("headM").style.visibility = "hidden";
+        document.getElementById("MoneyToBet").style.visibility = "hidden";
+        document.getElementById("PlayerCards").innerHTML = " ";
+        document.getElementById("DealerCards").innerHTML = " ";
+        document.getElementById("MoneyBet").innerHTML = " ";
+        createRand();
+        betAmt = 0;
+        pCards = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+        dCards = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+        win = false;
+        ToCard = " ";
+        ToCardValue = 0;
+        slotNum = 0;
+        included = true;
+        pCardsTotalValue = 0;
+        dCardsTotalValue = 0;
+        window.alert("YOU LOST (Reload the page to play again)");
+      }
+    }
+//..............................
+    function reset(){//resets and sets up for next round. to reset game, can only reload page
+      document.getElementById("Bet").style.visibility = "visible";
+      document.getElementById("MoneyToBet").style.visibility = "visible";
+      document.getElementById("Hit").style.visibility = "hidden";
+      document.getElementById("Stand").style.visibility = "hidden";
+      document.getElementById("Fold").style.visibility = "hidden";
+      document.getElementById("headD").style.visibility = "visible";
+      document.getElementById("headP").style.visibility = "visible";
+      document.getElementById("headM").style.visibility = "visible";
+      document.getElementById("PlayerCards").innerHTML = " ";
+      document.getElementById("DealerCards").innerHTML = " ";
+      document.getElementById("MoneyBet").innerHTML = " ";
+      createRand();
+      betAmt = 0;
+      pCards = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      dCards = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      win = false;
+      ToCard = " ";
+      ToCardValue = 0;
+      slotNum = 0;
+      included = true;
+      pCardsTotalValue = 0;
+      dCardsTotalValue = 0;
+    }
+    reset();
+//..............................
+    //all the button commands
+    document.getElementById("Bet").onclick = function(){
+      useMoney();//will bet the money
+      document.getElementById("Hit").style.visibility = "visible";
+      document.getElementById("Bet").style.visibility = "hidden";
+      document.getElementById("MoneyToBet").style.visibility = "hidden";
+    }
+
+    document.getElementById("Hit").onclick = function(){
+      document.getElementById("Stand").style.visibility = "visible";
+      document.getElementById("Fold").style.visibility = "visible";
+      included = true;
+      while (included == true){
+        createRand();//changes randNum to be a rand number
+        checkCards();//checks player's cards.
+      }
+      checkCardSlotNum(pCards);//checks which one of the player's cards slot is empty
+      pCards[slotNum] = randNum;//puts in randNum into that slot
+      let i;
+      pCardsTotalValue = 0;
+      document.getElementById("PlayerCards").innerHTML = " ";
+      for (i = 0; i <= slotNum; i++) {//update html "player cards"
+        numToCard(pCards[i]);
+        document.getElementById("PlayerCards").innerHTML += ToCard + "<br> ";
+        pCardsTotalValue += ToCardValue;
+      }
+      document.getElementById("PlayerCards").innerHTML += "<br><br>Out of 21, your total points are: " + pCardsTotalValue;
+      if (pCardsTotalValue > 21) {
+        document.getElementById("PlayerCards").innerHTML += "<br>You Busted!";
+        win = false;
+        document.getElementById("Hit").style.visibility = "hidden";
+        document.getElementById("Stand").style.visibility = "hidden";
+        document.getElementById("Fold").style.visibility = "hidden";
+      }
+    }
+
+    document.getElementById("Fold").onclick = function(){
+      money = money + betAmt;
+      document.getElementById("MoneyLeft").innerHTML = "$" + money;
+      reset();
+    }
+
+    document.getElementById("Stand").onclick = function(){
+      dealersTurn();
+      compare();
+      document.getElementById("Hit").style.visibility = "hidden";
+      document.getElementById("Stand").style.visibility = "hidden";
+      document.getElementById("Fold").style.visibility = "hidden";
+    }
+
+    document.getElementById("NextRound").onclick = function(){
+      gameLost();
+      if (Number(money) != 0){
+        reset();
+      }
+    }
+
+
+//..............................
+    //konami cheat code section
+    //punch in the code on your keyboard for a little something. works as many times as you want
+  var pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    var current = 0;
+
+    var keyHandler = function (event) {
+    	if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
+    		current = 0;
+    		return;
+    	}
+    	current++;
+    	if (pattern.length === current) {
+    		current = 0;
+    		window.alert('Wiring $1000 to Player');
+        money += 1000;
+        document.getElementById("MoneyLeft").innerHTML = "$" + money;
+    	}
+    };
+    document.addEventListener('keydown', keyHandler, false);
+//..............................
+
+  </script>
+</body>
+</html>

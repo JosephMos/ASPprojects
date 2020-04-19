@@ -1,0 +1,95 @@
+<html>
+<head></head> <!--2-->
+<body style="background-color:#21242e">
+  <h1 style="color:white"> Dealer's Cards </h1>
+  <p id="DealerCards" style="color:white"> </p>
+  <h1 style="color:white"> Your Cards </h1>
+  <p id="PlayerCards" style="color:white"> </p>
+  <h1 style="color:white"> Money Left </h1>
+  <p id="MoneyLeft" style="color:white"> $100 </p>
+  <p id="MoneyBet" style="color:white"> </p>
+  <input type="number" id="MoneyToBet"  placeholder="Enter amount of $ to bet"> <button id="Bet">Bet</button> <br>
+  <button id="Hit">Hit</button> <button id="Fold">Fold</button><br>
+  <p id="MoneyBet" style="color:white"> </p>
+
+  <script>
+    //.............................
+    //idk what to do about the cards so fill it in as we go
+
+
+    //..............................
+    //dealing section
+
+    function dealCards(person) {
+      if (person == Dealer) {
+
+      }
+      else { //if person is Player
+        //this bit is a bit self explanatory. just do it once the cards are created
+      }
+    }
+
+    //..............................
+    //game section
+
+    var win = false;
+    //make the game here based off the Cards
+    //when win, change var win to be true
+
+    //..............................
+    //money section
+
+    var money = 100;
+
+    function useMoney() {
+      let betAmt = 5;
+      if (document.getElementById("MoneyToBet").value >= 1) {
+        betAmt = document.getElementById("MoneyToBet").value;
+      }
+      money = money - betAmt;
+      document.getElementById("MoneyLeft").innerHTML = "$" + money;
+      document.getElementById("MoneyBet").innerHTML = "You bet: $" + betAmt;
+    }
+    function MoneyWon () {
+      if (win == true) {
+        money = (2 * betAmt) + money;
+        window.alert('Congrats. You won.');
+      }
+      else {
+        window.alert('You lost this round, you loser.');
+      }
+    }
+    //..............................
+    //all the button commands
+    document.getElementById("Bet").onclick = function(){
+      useMoney();
+    }
+
+
+    //..............................
+    //konami cheat code section
+    //punch in the code on your keyboard for a little something. works as many times as you want
+    //reference: https://gomakethings.com/how-to-create-a-konami-code-easter-egg-with-vanilla-js/
+    var pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    var current = 0;
+
+    var keyHandler = function (event) {
+    	if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
+    		current = 0;
+    		return;
+    	}
+    	current++;
+    	if (pattern.length === current) {
+    		current = 0;
+    		window.alert('Wiring $1000 to Player');
+        money += 1000;
+        document.getElementById("MoneyLeft").innerHTML = "$" + money;
+    	}
+    };
+    document.addEventListener('keydown', keyHandler, false);
+
+    //..............................
+
+  </script>
+</body>
+</html>

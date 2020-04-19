@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+  <input type="text" id="itemName"  placeholder="Enter an item"><br>
+  <input type="number" id="num"  placeholder="Enter number of items"><br>
+  Bio: <input type="checkbox" id="bio" value="bio"><br>
+  <select class="" id="type">
+    <option value="Grocery">Grocery</option>
+    <option value="Toiletries">Toiletries</option>
+    <option value="Other">Other</option>
+  </select><br>
+  <button id="submit">Submit</button><br>
+  <h1> Grocery </h1>
+  <ul id="Groceries"></ul>
+  <h1> Toiletries </h1>
+  <ul id="Toiletries"></ul>
+  <h1> Other </h1>
+  <ul id="Other"></ul>
+  </body>
+  <script>
+//create a list and add the list there. then sort that out individually to present on page.
+  var list = [];
+  var bio = " ";
+
+  function addToList () {
+    if (document.getElementById("bio") == checked) {
+      let bio = " bio";
+    }
+
+    if (document.getElementById("type").value == "Grocery") {
+      list[list.length] = "g" + document.getElementById("num").value + " " + document.getElementById("itemName").value + bio;
+    } else if (document.getElementById("type").value == "Toiletries") {
+      list[list.length] = "t" + document.getElementById("num").value + " " + document.getElementById("itemName").value + bio;
+    } else if (document.getElementById("type").value == "Other") {
+      list[list.length] = "o" + document.getElementById("num").value + " " + document.getElementById("itemName").value + bio;
+    }
+  }
+
+//list.forEach(showEachList);
+
+  function showEachList (item, index) {
+
+    if (item.substring(0, 1) == "g") {
+      var node = document.createElement("LI");
+      var textnode = document.createTextNode(list[index].substring(1));
+      node.appendChild(textnode);
+      document.getElementById("Groceries").appendChild(node);
+    } else if (item.substring(0, 1) == "t") {
+
+    } else if (item.substring(0, 1) == "o") {
+
+    }
+  }
+
+document.getElementById("submit").onclick= function () {
+addToList();
+list.forEach(showEachList);
+}
+  /*
+  while(currentItem != null){
+    var node = document.createElement("LI");
+    var textnode = document.createTextNode(currentItem.name);
+    node.appendChild(textnode);
+    document.getElementById(list).appendChild(node);
+    currentItem = currentItem.next;
+  }
+  */
+
+  </script>
+</html>
